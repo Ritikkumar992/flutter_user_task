@@ -50,16 +50,16 @@ class _UserListState extends State<UserList> {
           Expanded(
             child: FutureBuilder<List<User>>(
               future: userdata.getUsers(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting)
+              builder: (context, frame) {
+                if (frame.connectionState == ConnectionState.waiting)
                 {
                   return const Center(child: CircularProgressIndicator());
                 }
-                else if (snapshot.hasError) {
-                  return Text('error: ${snapshot.error}');
+                else if (frame.hasError) {
+                  return Text('error: ${frame.error}');
                 }
                 else {
-                  List<User> users = snapshot.data!;
+                  List<User> users = frame.data!;
                   return ListView.builder(
                     itemCount: users.length,
                     itemBuilder: (context, idx) {
