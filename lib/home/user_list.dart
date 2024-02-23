@@ -66,8 +66,8 @@ class _UserListState extends State<UserList> {
                       return Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Container(
-                          width: double.infinity, // 80% of screen width
-                          height: MediaQuery.of(context).size.height * 0.2, // 30% of screen height
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.height * 0.2,
                           decoration: BoxDecoration(
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(6.0),
@@ -108,10 +108,10 @@ class _UserListState extends State<UserList> {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     border: Border.all(
-                                      color: Colors.black, // Border color
-                                      width: 1, // Border width
+                                      color: Colors.black,
+                                      width: 1,
                                     ),
-                                    borderRadius: BorderRadius.circular(8), // Border radius
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: const Icon(
                                     Icons.edit,
@@ -150,10 +150,10 @@ class _UserListState extends State<UserList> {
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       border: Border.all(
-                                        color: Colors.black, // Border color
-                                        width: 1, // Border width
+                                        color: Colors.black,
+                                        width: 1,
                                       ),
-                                      borderRadius: BorderRadius.circular(8), // Border radius
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: const Icon(
                                       Icons.delete,
