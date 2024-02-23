@@ -32,23 +32,47 @@ class _AddUserClassState extends State<AddUserClass> {
     return null;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-            'Add User',
-          style: TextStyle(color: Colors.deepPurple, fontSize: 22),
+        title: Center(
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+            ),
+            child: const Center(
+              child: Text(
+                'Add User',
+                style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
         ),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          width: double.infinity,
+          height: 400,
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+            borderRadius: BorderRadius.circular(6.0),
+            border: Border.all(
+              color: Colors.grey,
+              width: 1.7,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextFormField(
                   controller: nameController,
@@ -56,9 +80,7 @@ class _AddUserClassState extends State<AddUserClass> {
                   decoration: InputDecoration(
                       labelText: 'User Name',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)
-                      )
-                  ),
+                          borderRadius: BorderRadius.circular(5.0))),
                 ),
                 SizedBox(height: 16),
                 TextFormField(
@@ -68,12 +90,10 @@ class _AddUserClassState extends State<AddUserClass> {
                   decoration: InputDecoration(
                       labelText: 'Phone Number',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)
-                      )
-                  ),
+                          borderRadius: BorderRadius.circular(5.0))),
                 ),
                 const SizedBox(height: 16.0),
-                const Text('Gender'),
+                const Text('Gender', style: TextStyle(color: Colors.deepPurple, fontSize: 16.0),),
                 Row(
                   children: [
                     Radio<String>(
@@ -121,10 +141,26 @@ class _AddUserClassState extends State<AddUserClass> {
                       );
                       await userData.insertUser(newUser);
                       Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'New User Added Successfully 💚',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          backgroundColor: Colors.green,
+                          elevation: 6,
+                          behavior: SnackBarBehavior.floating,
+                          duration: Duration(seconds: 3),
+                        ),
+                      );
                     }
                   },
                   child: const Text(
-                      'Save',
+                    'Save',
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                 ),
@@ -135,11 +171,23 @@ class _AddUserClassState extends State<AddUserClass> {
       ),
     );
   }
+
   bool _validateForm() {
     if (validateName(nameController.text) != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please enter a user name'),
+          content: Text(
+            'Please Enter Your User Name ⚠️',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.redAccent,
+          elevation: 6,
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 3),
         ),
       );
       return false;
@@ -147,7 +195,18 @@ class _AddUserClassState extends State<AddUserClass> {
     if (validatePhoneNumber(numberController.text) != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please enter a valid phone number'),
+          content: Text(
+            'Please enter a valid phone number ⚠️',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.redAccent,
+          elevation: 6,
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 3),
         ),
       );
       return false;
@@ -155,7 +214,18 @@ class _AddUserClassState extends State<AddUserClass> {
     if (gender.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please select a gender'),
+          content: Text(
+            'Please Select your gender ⚠️',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.redAccent,
+          elevation: 6,
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 3),
         ),
       );
       return false;
